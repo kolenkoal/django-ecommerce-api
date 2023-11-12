@@ -1,0 +1,62 @@
+# Ignore Python-related files and directories
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+db.sqlite3
+.env
+
+# Ignore Node.js-related files and directories
+node_modules/
+package-lock.json
+npm-debug.log
+yarn-error.log
+
+# Ignore environment-specific settings
+*.local
+
+# Ignore IDE and editor-specific files
+.vscode/
+.idea/
+
+# Ignore compiled JavaScript and build artifacts
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+
+# Ignore media and user uploads (customize this based on your setup)
+media/
+
+# Ignore environment-specific files
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore migration files and database configurations
+*/migrations/
+
+# Ignore log and temp files
+*.log.*
+*.tmp
+
+
+# Ignore any local development files and secrets
+local_settings.py
+
+# Ignore virtual environment directories
+venv/
+.env/
+
+# Ignore editor and system-specific files
+*.swp
+*.swm
+*.swo
+Thumbs.db
+ehthumbs.db
+
+# Ignore logs and test outputs
+logs/
+test-output/
