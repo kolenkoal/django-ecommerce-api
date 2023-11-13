@@ -22,21 +22,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Application definition
 
-# CUSTOM_APPS = [
-#     ''
-# ]
+CUSTOM_APPS = ["user"]
 
-THIRD_PARTY_APPS = ["rest_framework", "corsheaders", "drf_spectacular"]
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "corsheaders",
+    "drf_spectacular",
+    "django_phonenumbers",
+    "phonenumber_field",
+]
 
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-] + THIRD_PARTY_APPS
-# ] + THIRD_PARTY_APPS + CUSTOM_APPS
+INSTALLED_APPS = (
+    [
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.staticfiles",
+    ]
+    + THIRD_PARTY_APPS
+    + CUSTOM_APPS
+)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -111,3 +118,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"}
+
+AUTH_USER_MODEL = "user.User"
