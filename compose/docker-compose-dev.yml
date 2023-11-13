@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ../backend
+      dockerfile: docker/development/Dockerfile
+    container_name: e-commerce-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../backend/env/development/.env
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ../backend:/backend
+    networks:
+      - ecommerce-api-net
+      - ecommerce-db-net
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13-alpine
+    env_file:
+      - ../backend/env/development/.db.env
+    ports:
+      - "5433:5432"
+    container_name: ecommerce-db
+    networks:
+      - ecommerce-db-net
+    volumes:
+      - ecommerce-data-storage:/var/lib/postgresql/data
+
+
+networks:
+  ecommerce-api-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+  ecommerce-db-net:
+    driver: bridge
+
+volumes:
+  ecommerce-data-storage:
