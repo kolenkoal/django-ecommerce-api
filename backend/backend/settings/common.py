@@ -26,10 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #     ''
 # ]
 
-THIRD_PARTY_APPS = [
-    "rest_framework",
-    "corsheaders",
-]
+THIRD_PARTY_APPS = ["rest_framework", "corsheaders", "drf_spectacular"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -112,3 +109,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"}
