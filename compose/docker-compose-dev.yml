@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   backend:
+    restart: always
     build:
       context: ../backend
       dockerfile: docker/development/Dockerfile
@@ -17,6 +18,8 @@ services:
     networks:
       - ecommerce-api-net
       - ecommerce-db-net
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
     depends_on:
       - db
 
